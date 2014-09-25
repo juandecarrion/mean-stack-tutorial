@@ -7,7 +7,12 @@ function($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: '/home',
       templateUrl: '/home.html',
-      controller: 'MainCtrl'
+      controller: 'MainCtrl',
+      resolve: {
+        postPromise: ['postService', function (postService) {
+          return postService.getAll();
+        }]
+      }
     })
     .state('posts', {
       url: '/posts/{id}',
