@@ -6,6 +6,12 @@ var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 
+// Conect to MongoDB
+mongoose.connect('mongodb://localhost/news');
+
+require('./models/Post');
+require('./models/Comment');
+
 var routes  = require('./routes/index');
 var users   = require('./routes/users');
 
@@ -56,11 +62,5 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
-// Conect to MongoDB
-mongoose.connect('mongodb://localhost/news');
-
-require('./models/Post');
-require('./models/Comment');
 
 module.exports = app;
