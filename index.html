@@ -4,7 +4,7 @@
   <title>Flapper News</title>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body ng-app="flapperNews" ng-controller="PostCtrl">
+<body ng-app="flapperNews">
   <script type="text/ng-template" id="/home.html">
       <div class="page-header">
         <h1>Flapper News</h1>
@@ -21,6 +21,9 @@
           <span ng-hide="post.link">
             {{post.title}}
           </span>
+        </span>
+        <span>
+          <a href="#/posts/{{$index}}">Comments</a>
         </span>
       </div>
 
@@ -44,6 +47,28 @@
       </form>
   </script>
   
+  <script type="text/ng-template" id="/posts.html">
+    <div class="page-header">
+      <h3>
+        <a ng-show="post.link" href="{{post.link}}">
+          {{post.title}}
+        </a>
+        <span ng-hide="post.link">
+          {{post.title}}
+        </span>
+      </h3>
+    </div>
+
+    <div ng-repeat="comment in post.comments | orderBy:'-upvotes'">
+      <span class="glyphicon glyphicon-thumbs-up"
+        ng-click="incrementUpvotes(comment)"></span>
+      {{comment.upvotes}} - by {{comment.author}}
+      <span style="font-size:20px; margin-left:10px;">
+        {{comment.body}}
+      </span>
+    </div>
+  </script>
+  
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       
@@ -57,6 +82,7 @@
   <!-- Own JS files -->
   <script src="js/app.js"></script>
   <script src="js/services/postService.js"></script>
+  <script src="js/controllers/mainController.js"></script>
   <script src="js/controllers/postController.js"></script>
   <script src="js/config/routes.js"></script>
 </body>
