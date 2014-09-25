@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Angular App!</title>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
-    <script src="app.js"></script>
+  <title>My Angular App!</title>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="app.js"></script>
 </head>
 <body ng-app="flapperNews" ng-controller="MainCtrl">
-    <div>
-        <div ng-repeat="post in posts | orderBy: '-upvotes'">
-          {{post.title}} - upvotes: {{post.upvotes}}
-        </div>
-        <form ng-submit="addPost()">
-            <input type="text" ng-model="title" />
-            <button type="submit">Post</button>
-        </form>
+  <div>
+    <div ng-repeat="post in posts | orderBy: '-upvotes'">
+      {{post.title}} - upvotes: {{post.upvotes}}
     </div>
+    <form ng-submit="addPost()">
+      <input type="text" ng-model="title" />
+      <button type="submit">Post</button>
+    </form>
+  </div>
 </body>
 </html>
