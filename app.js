@@ -5,7 +5,9 @@ angular.module('flapperNews', [])
   .controller('MainCtrl', [
     '$scope',
     function ($scope) {
+      
       $scope.test = 'Hellow world!';
+      
       $scope.posts = [                
         {title: 'post 1', upvotes: 5},
         {title: 'post 2', upvotes: 2},
@@ -13,12 +15,18 @@ angular.module('flapperNews', [])
         {title: 'post 4', upvotes: 9},
         {title: 'post 5', upvotes: 4}
       ];
+      
       $scope.addPost = function () {
         if(!$scope.title) {
           return;
         }
         $scope.posts.push({title: $scope.title, upvotes: 0});
         $scope.title = '';
-      }
+      };
+      
+      $scope.incrementUpvotes = function(post) {
+        post.upvotes += 1;
+      };
+      
     }
   ]);
