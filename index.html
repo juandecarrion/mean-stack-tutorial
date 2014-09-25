@@ -7,7 +7,7 @@
 </head>
 <body ng-app="flapperNews" ng-controller="MainCtrl">
     <div>
-        <div ng-repeat="post in posts">
+        <div ng-repeat="post in posts | orderBy: '-upvotes'">
           {{post.title}} - upvotes: {{post.upvotes}}
         </div>
     </div>
